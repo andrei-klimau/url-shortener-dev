@@ -2,6 +2,7 @@
 
 namespace App\Interfaces;
 
-interface UniqueIdGeneratorInterface {
+interface UniqueIdGeneratorInterface
+{
     public function getUniqueId(): string;
 }

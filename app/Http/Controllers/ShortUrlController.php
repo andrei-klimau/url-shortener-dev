@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ShortUrlRequest;
 use App\Interfaces\UniqueIdGeneratorInterface;
 use App\Models\ShortUrl;
-use App\Http\Requests\ShortUrlRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
@@ -25,17 +25,17 @@ class ShortUrlController extends Controller
         // ToDo: Add a 1-to-1 relationship to the statistics table
         $userId = Auth::id();
         $shortUrls = ShortUrl::where('user_id', $userId)
-                ->with('redirectStatistic')
-                ->paginate(15);
+            ->with('redirectStatistic')
+            ->paginate(15);
 
         return view('urls.index', compact('shortUrls'));
     }
- 
+
     public function create(UniqueIdGeneratorInterface $generator)
     {
         $userId = Auth::id();
         $shortUrKey = $generator->getUniqueId();
-        
+
         return view('urls.create', compact('userId', 'shortUrKey'));
     }
 
@@ -48,14 +48,14 @@ class ShortUrlController extends Controller
             ->route('urls.index')
             ->with('success', 'Short Url created successfully.');
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
         $shortUrl = ShortUrl::findOrFail($id);
-        if (!Gate::allows('update', $shortUrl)) {
+        if (! Gate::allows('update', $shortUrl)) {
             abort(403);
         }
 
@@ -68,7 +68,7 @@ class ShortUrlController extends Controller
     public function update(ShortUrlRequest $request, string $id)
     {
         $shortUrl = ShortUrl::findOrFail($id);
-        if (!Gate::allows('update', $shortUrl)) {
+        if (! Gate::allows('update', $shortUrl)) {
             abort(403);
         }
 
@@ -79,21 +79,21 @@ class ShortUrlController extends Controller
             ->route('urls.index')
             ->with('success', 'Short Url updated successfully.');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
         $shortUrl = ShortUrl::findOrFail($id);
-        if (!Gate::allows('delete', $shortUrl)) {
+        if (! Gate::allows('delete', $shortUrl)) {
             abort(403);
         }
 
         $shortUrl->delete();
 
-       return redirect()
-               ->route('urls.index')
-               ->with('success', 'Short Url deleted successfully.');
+        return redirect()
+            ->route('urls.index')
+            ->with('success', 'Short Url deleted successfully.');
     }
 }

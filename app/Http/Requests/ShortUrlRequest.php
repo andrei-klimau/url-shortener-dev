@@ -27,12 +27,12 @@ class ShortUrlRequest extends FormRequest
             'orig_url' => 'required|url:http,https',
             'short_url_key' => [
                 'required',
-                'min:8', 
-                'max:16', 
+                'min:8',
+                'max:16',
                 'alpha_num:ascii',
-                Rule::unique('short_urls')->ignore($this->request->get('id'))
-                ],
-            'name' => 'required|max:255'
+                Rule::unique('short_urls')->ignore($this->request->get('id')),
+            ],
+            'name' => 'required|max:255',
         ];
     }
 }

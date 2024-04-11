@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('redirect_statistics', function (Blueprint $table) {
             $table->id();
             $table->foreignId('short_url_id')->references('id')->on('short_urls')
-                    ->cascadeOnDelete();
+                ->cascadeOnDelete();
             $table->unsignedBigInteger('redirect_count')->default(1);
             $table->timestamps();
         });

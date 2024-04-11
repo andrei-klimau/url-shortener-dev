@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('short_urls', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')
-                    ->cascadeOnDelete();
+                ->cascadeOnDelete();
             $table->string('orig_url');
             $table->string('short_url_key', 16);
             $table->string('name', 255);

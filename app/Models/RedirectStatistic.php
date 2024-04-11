@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class RedirectStatistic extends Model
 {
     use HasFactory;
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -16,6 +16,6 @@ class RedirectStatistic extends Model
      */
     protected $fillable = [
         'short_url_id',
-        'redirect_count'
+        'redirect_count',
     ];
 }

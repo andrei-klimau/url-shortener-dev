@@ -4,8 +4,8 @@ namespace App\Providers;
 
 use App\Interfaces\UniqueIdGeneratorInterface;
 use App\Services\UniqueIdGeneratorAdapter;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,8 +15,8 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(
-                UniqueIdGeneratorInterface::class,
-                UniqueIdGeneratorAdapter::class
+            UniqueIdGeneratorInterface::class,
+            UniqueIdGeneratorAdapter::class
         );
     }
 

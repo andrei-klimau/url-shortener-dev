@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class ShortUrl extends Model
 {
     use HasFactory;
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -19,9 +19,9 @@ class ShortUrl extends Model
         'user_id',
         'orig_url',
         'short_url_key',
-        'name'
+        'name',
     ];
-    
+
     public function redirectStatistic(): HasOne
     {
         return $this->hasOne(RedirectStatistic::class);

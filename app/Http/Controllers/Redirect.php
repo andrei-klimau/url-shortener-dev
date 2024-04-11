@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\ShortUrlService;
 use App\Services\RedirectStatisticService;
+use App\Services\ShortUrlService;
 
 class Redirect extends Controller
 {
-    function execute(
-            string $urlKey,
-            ShortUrlService $shortUrlSvc,
-            RedirectStatisticService $redirectStatisticSvc
+    public function execute(
+        string $urlKey,
+        ShortUrlService $shortUrlSvc,
+        RedirectStatisticService $redirectStatisticSvc
     ) {
         try {
             $shortUrl = $shortUrlSvc->resolveShortUrlByKey($urlKey);
             $redirectStatisticSvc->incrementRedirectCounter(
-                    (int)$shortUrl->id
-                );
+                (int) $shortUrl->id
+            );
         } catch (\Exception $e) {
             abort(404);
         }
