@@ -9,9 +9,11 @@
             </div>
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">{{ __('Dashboard') }}
-                    <a href="{{ route('urls.index') }}" class="btn btn-primary btn-sm" title="{{ __('List of shortened links') }}">
-                        <i class="bi bi-card-list"></i>
-                    </a>
+                    @auth
+                        <a href="{{ route('urls.index') }}" class="btn btn-primary btn-sm" title="{{ __('List of shortened links') }}">
+                            <i class="bi bi-card-list"></i>
+                        </a>
+                    @endauth
                 </div>
 
                 <div class="card-body">
