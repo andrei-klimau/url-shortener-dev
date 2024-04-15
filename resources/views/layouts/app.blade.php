@@ -56,8 +56,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <h6 class="dropdown-header">{{ __('Navigation') }}</h6>
                                     <a class="dropdown-item" href="{{ route('urls.index') }}">
-                                        {{ __('List of shortened links') }}
+                                        {{ __('Shortened links') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('tokens.index') }}">
                                         {{ __('Authentication tokens') }}
