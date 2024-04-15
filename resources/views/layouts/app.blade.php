@@ -59,6 +59,10 @@
                                     <a class="dropdown-item" href="{{ route('urls.index') }}">
                                         {{ __('List of shortened links') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('tokens.index') }}">
+                                        {{ __('Authentication tokens') }}
+                                    </a>
+                                    <hr class="dropdown-divider" />
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
