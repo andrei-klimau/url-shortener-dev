@@ -22,10 +22,9 @@ class ShortUrlController extends Controller
 
     public function create(UniqueIdGeneratorInterface $generator)
     {
-        $userId = Auth::id();
         $shortUrKey = $generator->getUniqueId();
 
-        return view('urls.create', compact('userId', 'shortUrKey'));
+        return view('urls.create', compact('shortUrKey'));
     }
 
     public function store(ShortUrlRequest $request)

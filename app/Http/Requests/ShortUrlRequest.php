@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class ShortUrlRequest extends FormRequest
@@ -34,5 +35,12 @@ class ShortUrlRequest extends FormRequest
             ],
             'name' => 'required|max:255',
         ];
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->mergeIfMissing([
+            'user_id' => Auth::id(),
+        ]);
     }
 }

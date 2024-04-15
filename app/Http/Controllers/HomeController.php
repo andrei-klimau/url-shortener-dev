@@ -16,7 +16,7 @@ class HomeController extends Controller
         $lastUrl = ShortUrl::where('user_id', $userId)
             ->orderBy('updated_at', 'DESC')->first();
 
-        return view('home', compact('userId', 'shortUrKey', 'totalLinks',
+        return view('home', compact('shortUrKey', 'totalLinks',
             'lastUrl'));
     }
 }
