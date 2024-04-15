@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Services\RedirectStatisticService;
 use App\Services\ShortUrlService;
 
-class Redirect extends Controller
+class RedirectController extends Controller
 {
-    public function execute(
+    public function __invoke(
         string $urlKey,
         ShortUrlService $shortUrlSvc,
         RedirectStatisticService $redirectStatisticSvc

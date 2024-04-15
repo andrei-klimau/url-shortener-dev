@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Redirect;
+use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\ShortUrlController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,5 +20,7 @@ Route::resource('urls', ShortUrlController::class)->middleware('auth');
 
 require __DIR__.'/auth.php';
 
-Route::get('/{urlKey}', [Redirect::class, 'execute'])->whereAlphaNumeric('urlKey');
+Route::get('/{urlKey}', RedirectController::class)
+    ->whereAlphaNumeric('urlKey');
+
 Auth::routes();
