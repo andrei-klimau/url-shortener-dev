@@ -23,7 +23,7 @@ class ShortUrlRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'required|integer',
+            'user_id' => 'required|integer|exists:App\Models\User,id',
             'orig_url' => 'required|url:http,https',
             'short_url_key' => [
                 'required',
