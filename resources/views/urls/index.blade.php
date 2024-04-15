@@ -44,16 +44,13 @@
                                                 </a>
                                             </div>
                                             <div class="p-1">
-                                                <form method="post"
-                                                    action="{{ route('urls.destroy', $shortUrl->id) }}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm" title="{{ __('Delete') }}">
-                                                        <i class="bi bi-trash"></i>
-                                                    </button>
-                                                </form>
+                                                <a href="#" class="btn btn-danger btn-sm" title="{{ __('Delete') }}"
+                                                    data-bs-toggle="modal" data-bs-target="#modalConfirm"
+                                                    data-confirm-action="{{ route('urls.destroy', $shortUrl->id) }}"
+                                                    data-confirm-message="{{ __('Are you sure you want to remove the ":name" link?', ['name' => $shortUrl->name]) }}">
+                                                    <i class="bi bi-trash"></i>
+                                                </a>
                                             </div>
-                                        <!-- ToDo: Add confirmation -->
                                         </div>
                                     </td>
                                 </tr>
@@ -66,10 +63,11 @@
                             </tbody>
                         </table>
             {{ $shortUrls->links() }}
-                </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@include('common.modal-confirm')
 @endsection
