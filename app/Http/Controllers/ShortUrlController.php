@@ -10,19 +10,8 @@ use Illuminate\Support\Facades\Gate;
 
 class ShortUrlController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
-        // ToDo: Add a 1-to-1 relationship to the statistics table
         $userId = Auth::id();
         $shortUrls = ShortUrl::where('user_id', $userId)
             ->with('redirectStatistic')
@@ -49,9 +38,6 @@ class ShortUrlController extends Controller
             ->with('success', 'Short Url created successfully.');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $shortUrl = ShortUrl::findOrFail($id);
@@ -62,9 +48,6 @@ class ShortUrlController extends Controller
         return view('urls.edit', compact('shortUrl'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(ShortUrlRequest $request, string $id)
     {
         $shortUrl = ShortUrl::findOrFail($id);
@@ -80,9 +63,6 @@ class ShortUrlController extends Controller
             ->with('success', 'Short Url updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $shortUrl = ShortUrl::findOrFail($id);
