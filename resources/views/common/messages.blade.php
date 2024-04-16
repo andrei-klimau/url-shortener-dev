@@ -9,7 +9,7 @@
         @if ($errors->count() > 1)
             <ul class="list-group list-group-flush">
                 @foreach($errors->all() as $error)
-                    <li class="list-group-item">{{ $error }}</li>
+                    <li class="list-group-item bg-transparent">{{ $error }}</li>
                 @endforeach
             </ul>
         @else
