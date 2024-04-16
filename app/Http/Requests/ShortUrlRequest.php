@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\ShortUrlRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
@@ -34,6 +35,7 @@ class ShortUrlRequest extends FormRequest
                 sprintf('max:%u', Config::get('uniqueid.max_length')),
                 'alpha_num:ascii',
                 Rule::unique('short_urls')->ignore($this->request->get('id')),
+                new ShortUrlRule(),
             ],
             'name' => 'required|max:255',
         ];

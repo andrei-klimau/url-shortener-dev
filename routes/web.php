@@ -21,6 +21,6 @@ Route::controller(TokenController::class)->middleware('auth')->group(function ()
 require __DIR__.'/auth.php';
 
 Route::get('/{urlKey}', RedirectController::class)
-    ->whereAlphaNumeric('urlKey');
+    ->whereAlphaNumeric('urlKey')->name('redirect.execute');
 
 Auth::routes();
