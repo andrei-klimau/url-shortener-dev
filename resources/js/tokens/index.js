@@ -6,6 +6,7 @@ $(function() {
         let message = modal.find('[data-role="modal-create-token-message"]');
  
         message.hide().removeAttr('class').text('');
+        btnSubmit.attr('disabled', '');
         $.ajax({
             url: form.attr('action'),
             data: form.serialize(),
@@ -28,6 +29,9 @@ $(function() {
                 message.addClass('alert alert-danger');
                 message.text(jqXHR.responseJSON.message);
                 message.show();
+            },
+            complete: function() {
+                btnSubmit.removeAttr('disabled');
             }
         });
     });
@@ -39,6 +43,7 @@ $(function() {
         let message = modal.find('[data-role="modal-create-token-message"]');
         
         form.show();
+        btnSubmit.removeAttr('disabled');
         btnSubmit.show();
         message.hide();
         form.trigger('reset');
