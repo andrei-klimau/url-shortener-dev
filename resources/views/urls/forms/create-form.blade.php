@@ -41,7 +41,8 @@
 
                             <div class="col-md-6">
                                 <input id="short_url_key" type="text" class="form-control @error('short_url_key') is-invalid @enderror" name="short_url_key" aria-describedby="short_url_key_help" value="{{ $shortUrKey }}" required>
-                                <div id="short_url_key_help" class="form-text">{{ __('Link length is from 8 to 16 characters. Acceptable characters: letters A-Z and numbers 0-9.') }}</div>
+                                <div id="short_url_key_help" class="form-text">{{ __('Link length is from :uniqueIdMinLen to :uniqueIdMaxLen characters. Acceptable characters: letters A-Z and numbers 0-9.',
+                                    compact('uniqueIdMinLen', 'uniqueIdMaxLen')) }}</div>
                                 
                                 @error('short_url_key')
                                     <span class="invalid-feedback" role="alert">

@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Validation\Rule;
 
 class ShortUrlRequest extends FormRequest
@@ -19,7 +20,8 @@ class ShortUrlRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule
+     *   |array<mixed>|string>
      */
     public function rules(): array
     {
@@ -28,8 +30,8 @@ class ShortUrlRequest extends FormRequest
             'orig_url' => 'required|url:http,https',
             'short_url_key' => [
                 'required',
-                'min:8',
-                'max:16',
+                sprintf('min:%u', Config::get('uniqueid.min_length')),
+                sprintf('max:%u', Config::get('uniqueid.max_length')),
                 'alpha_num:ascii',
                 Rule::unique('short_urls')->ignore($this->request->get('id')),
             ],

@@ -6,6 +6,7 @@ use App\Http\Requests\ShortUrlRequest;
 use App\Interfaces\UniqueIdGeneratorInterface;
 use App\Models\ShortUrl;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Gate;
 
 class ShortUrlController extends Controller
@@ -22,9 +23,15 @@ class ShortUrlController extends Controller
 
     public function create(UniqueIdGeneratorInterface $generator)
     {
-        $shortUrKey = $generator->getUniqueId();
+        $uniqueIdMinLen = (int) Config::get('uniqueid.min_length');
+        $uniqueIdMaxLen = (int) Config::get('uniqueid.max_length');
+        $shortUrKey = $generator->getUniqueId(
+            $uniqueIdMinLen,
+            $uniqueIdMaxLen
+        );
 
-        return view('urls.create', compact('shortUrKey'));
+        return view('urls.create', compact('shortUrKey', 'uniqueIdMinLen',
+            'uniqueIdMaxLen'));
     }
 
     public function store(ShortUrlRequest $request)
@@ -44,7 +51,11 @@ class ShortUrlController extends Controller
             abort(403);
         }
 
-        return view('urls.edit', compact('shortUrl'));
+        $uniqueIdMinLen = (int) Config::get('uniqueid.min_length');
+        $uniqueIdMaxLen = (int) Config::get('uniqueid.max_length');
+
+        return view('urls.edit', compact('shortUrl', 'uniqueIdMinLen',
+            'uniqueIdMaxLen'));
     }
 
     public function update(ShortUrlRequest $request, string $id)
