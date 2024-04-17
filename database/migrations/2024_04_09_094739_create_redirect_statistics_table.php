@@ -17,6 +17,7 @@ return new class extends Migration
                 ->cascadeOnDelete();
             $table->unsignedBigInteger('redirect_count')->default(1);
             $table->timestamps();
+            $table->unique('short_url_id');
         });
     }
 
