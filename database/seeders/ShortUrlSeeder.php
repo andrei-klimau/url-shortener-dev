@@ -15,7 +15,7 @@ class ShortUrlSeeder extends Seeder
     {
         ShortUrl::factory()
             ->count(50)
-            ->has(RedirectStatistic::factory()->count(3))
+            ->has(RedirectStatistic::factory()->count(1))
             ->create();
     }
 }
