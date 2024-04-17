@@ -8,9 +8,9 @@
                 @include('common.messages')
             </div>
             <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">{{ __('List of authentication tokens') }} 
+                <div class="card-header d-flex justify-content-between align-items-center">{{ __('token.list_tokens') }}
                     <a href="#" data-bs-toggle="modal" data-bs-target="#modalCreteToken"accesskey="
-                       "class="btn btn-primary btn-sm" title="{{ __('Add') }}">
+                       "class="btn btn-primary btn-sm" title="{{ __('common.add') }}">
                         <i class="bi bi-plus-square"></i>
                     </a>
                 </div>
@@ -20,12 +20,12 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">{{ __('Token name') }}</th>
-                                    <th scope="col">{{ __('Last used at') }}</th>
-                                    <th scope="col">{{ __('Expires at') }}</th>
-                                    <th scope="col" class="d-none d-lg-table-cell">{{ __('Created at') }}</th>
-                                    <th scope="col" class="d-none d-lg-table-cell">{{ __('Updated at') }}</th>
-                                    <th scope="col">{{ __('Action') }}</th>
+                                    <th scope="col">{{ __('token.token_name') }}</th>
+                                    <th scope="col">{{ __('token.last_used_at') }}</th>
+                                    <th scope="col">{{ __('token.expires_at') }}</th>
+                                    <th scope="col" class="d-none d-lg-table-cell">{{ __('common.created_at') }}</th>
+                                    <th scope="col" class="d-none d-lg-table-cell">{{ __('common.updated_at') }}</th>
+                                    <th scope="col">{{ __('common.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,10 +40,10 @@
                                     <td>
                                         <div class="d-flex flex-row mb-3">
                                             <div class="p-1">
-                                                <a href="#" class="btn btn-danger btn-sm" title="{{ __('Delete') }}"
+                                                <a href="#" class="btn btn-danger btn-sm" title="{{ __('common.delete') }}"
                                                     data-bs-toggle="modal" data-bs-target="#modalConfirm"
                                                     data-confirm-action="{{ route('tokens.destroy', $token->id) }}"
-                                                    data-confirm-message="{{ __('Are you sure you want to remove the ":name" token?', ['name' => $token->name]) }}">
+                                                    data-confirm-message="{{ __('token.are_you_sure_remove', ['name' => $token->name]) }}">
                                                     <i class="bi bi-trash"></i>
                                                 </a>
                                             </div>
@@ -53,7 +53,7 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="6" class="text-center">No Data</td>
+                                    <td colspan="6" class="text-center">{{ __('common.no_data') }}</td>
                                 </tr>
                             @endif
                             </tbody>

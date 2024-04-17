@@ -8,8 +8,8 @@
                 @include('common.messages')
             </div>
             <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">{{ __('List of shortened links') }} 
-                    <a href="{{ route('urls.create') }}" class="btn btn-primary btn-sm" title="{{ __('Add') }}">
+                <div class="card-header d-flex justify-content-between align-items-center">{{ __('shorturl.list_shortened_links') }}
+                    <a href="{{ route('urls.create') }}" class="btn btn-primary btn-sm" title="{{ __('common.add') }}">
                         <i class="bi bi-plus-square"></i>
                     </a>
                 </div>
@@ -19,12 +19,12 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">{{ __('Link name') }}</th>
-                                    <th scope="col">{{ __('Original link') }}</th>
-                                    <th scope="col">{{ __('Shortened link') }}</th>
-                                    <th scope="col">{{ __('Number of redirects') }}</th>
-                                    <th scope="col" class="d-none d-lg-table-cell">{{ __('Latest statistics update') }}</th>
-                                    <th scope="col">{{ __('Action') }}</th>
+                                    <th scope="col">{{ __('shorturl.link_name') }}</th>
+                                    <th scope="col">{{ __('shorturl.original_link') }}</th>
+                                    <th scope="col">{{ __('shorturl.shortened_link') }}</th>
+                                    <th scope="col">{{ __('shorturl.number_redirects') }}</th>
+                                    <th scope="col" class="d-none d-lg-table-cell">{{ __('shorturl.latest_stats_update') }}</th>
+                                    <th scope="col">{{ __('common.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,15 +39,15 @@
                                     <td>
                                         <div class="d-flex flex-row mb-3">
                                             <div class="p-1">
-                                                <a href="{{ route('urls.edit', $shortUrl->id) }}" class="btn btn-primary btn-sm" title="{{ __('Edit') }}">
+                                                <a href="{{ route('urls.edit', $shortUrl->id) }}" class="btn btn-primary btn-sm" title="{{ __('common.edit') }}">
                                                     <i class="bi bi-pencil"></i>
                                                 </a>
                                             </div>
                                             <div class="p-1">
-                                                <a href="#" class="btn btn-danger btn-sm" title="{{ __('Delete') }}"
+                                                <a href="#" class="btn btn-danger btn-sm" title="{{ __('common.delete') }}"
                                                     data-bs-toggle="modal" data-bs-target="#modalConfirm"
                                                     data-confirm-action="{{ route('urls.destroy', $shortUrl->id) }}"
-                                                    data-confirm-message="{{ __('Are you sure you want to remove the ":name" link?', ['name' => $shortUrl->name]) }}">
+                                                    data-confirm-message="{{ __('shorturl.are_you_sure_remove', ['name' => $shortUrl->name]) }}">
                                                     <i class="bi bi-trash"></i>
                                                 </a>
                                             </div>
@@ -57,7 +57,7 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="6" class="text-center">No Data</td>
+                                    <td colspan="6" class="text-center">{{ __('common.no_data') }}</td>
                                 </tr>
                             @endif
                             </tbody>

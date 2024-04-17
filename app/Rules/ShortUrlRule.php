@@ -35,6 +35,6 @@ class ShortUrlRule implements ValidationRule
             return;
         }
 
-        $fail('The :attribute key has already been taken.')->translate();
+        $fail('validation.short_url')->translate(['value' => $value]);
     }
 }

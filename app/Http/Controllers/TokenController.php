@@ -33,6 +33,6 @@ class TokenController extends Controller
 
         return redirect()
             ->route('tokens.index')
-            ->with('success', 'Token deleted successfully.');
+            ->with('success', __('token.deleted_successfully'));
     }
 }

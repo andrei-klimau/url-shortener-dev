@@ -26,7 +26,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->render(function (ValidationException $e, Request $request) {
             if ($request->is('api/*')) {
                 return response()->json([
-                    'message' => __('Validation errors'),
+                    'message' => __('exception.validation_errors'),
                     'errors' => $e->getMessage(),
                     'code' => 400,
                 ], 400);
@@ -35,7 +35,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->render(function (NotFoundHttpException $e, Request $request) {
             if ($request->is('api/*')) {
                 return response()->json([
-                    'message' => 'Record not found.',
+                    'message' => __('exception.record_not_found'),
                     'errors' => config('app.debug') ? $e->getMessage() : '',
                     'code' => 404,
                 ], 404);
@@ -44,7 +44,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->render(function (\Exception $e, Request $request) {
             if ($request->is('api/*')) {
                 return response()->json([
-                    'message' => __('An error has occurred.'),
+                    'message' => __('exception.error_has_occurred'),
                     'errors' => config('app.debug') ? $e->getMessage() : '',
                     'code' => $e->getCode(),
                 ], 500);

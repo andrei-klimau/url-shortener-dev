@@ -41,7 +41,7 @@ class ShortUrlController extends Controller
 
         return redirect()
             ->route('urls.index')
-            ->with('success', 'Short Url created successfully.');
+            ->with('success', __('shorturl.created_successfully'));
     }
 
     public function edit(string $id)
@@ -70,7 +70,7 @@ class ShortUrlController extends Controller
 
         return redirect()
             ->route('urls.index')
-            ->with('success', 'Short Url updated successfully.');
+            ->with('success', __('shorturl.updated_successfully'));
     }
 
     public function destroy(string $id)
@@ -84,6 +84,6 @@ class ShortUrlController extends Controller
 
         return redirect()
             ->route('urls.index')
-            ->with('success', 'Short Url deleted successfully.');
+            ->with('success', __('shorturl.deleted_successfully'));
     }
 }
