@@ -19,10 +19,10 @@ class HomeController extends Controller
             $uniqueIdMaxLen
         );
         $totalLinks = ShortUrl::where('user_id', $userId)->count();
-        $lastUrl = ShortUrl::where('user_id', $userId)
+        $lastCreatedUrl = ShortUrl::where('user_id', $userId)
             ->orderBy('updated_at', 'DESC')->first();
 
         return view('home', compact('shortUrKey', 'totalLinks',
-            'lastUrl', 'uniqueIdMinLen', 'uniqueIdMaxLen'));
+            'lastCreatedUrl', 'uniqueIdMinLen', 'uniqueIdMaxLen'));
     }
 }

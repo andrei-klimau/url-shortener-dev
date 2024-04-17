@@ -31,14 +31,15 @@
                         <h6 class="card-subtitle mb-2">
                             {{ __('home.total_links') }} <span class="badge bg-secondary">{{ $totalLinks }}</span>
                         </h6>
-                        @if(!empty($lastUrl))
+                        @if(!empty($lastCreatedUrl))
                             <h6 class="card-subtitle mb-2">
                                 {{ __('home.last_created_link') }}
                                 <span class="badge bg-light text-dark">
-                                    <a href="{{ url($lastUrl->short_url_key) }}" target="_blank">{{ $lastUrl->orig_url }}</a>
+                                    <a href="{{ url($lastCreatedUrl->short_url_key) }}" target="_blank">{{ $lastCreatedUrl->orig_url }}</a>
                                 </span>
                             </h6>
                         @endif
+                        <hr/>
                         @include('urls.forms.create-form')
                     @endguest
                 </div>
