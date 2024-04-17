@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-@include('urls.forms.create-form')
+@include('urls.include.create-form')
 @endsection
