@@ -33,10 +33,26 @@
                                 @foreach ($tokens as $token)
                                 <tr>
                                     <td>{{ $token->name }}</td>
-                                    <td>{{ $token->last_used_at ?? '-' }}</td>
-                                    <td>{{ $token->expires_at ?? '-' }}</td>
-                                    <td class="d-none d-lg-table-cell">{{ $token->created_at }}</td>
-                                    <td class="d-none d-lg-table-cell">{{ $token->updated_at }}</td>
+                                    <td>
+                                        @if(empty($token->last_used_at))
+                                            <span>-</span>
+                                        @else
+                                            @include('common.date-time', ['date' => $token->last_used_at])
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if(empty($token->expires_at))
+                                            <span>-</span>
+                                        @else
+                                            @include('common.date-time', ['date' => $token->expires_at])
+                                        @endif
+                                    </td>
+                                    <td class="d-none d-lg-table-cell">
+                                        @include('common.date-time', ['date' => $token->created_at])
+                                    </td>
+                                    <td class="d-none d-lg-table-cell">
+                                        @include('common.date-time', ['date' => $token->created_at])
+                                    </td>
                                     <td>
                                         <div class="d-flex flex-row mb-3">
                                             <div class="p-1">

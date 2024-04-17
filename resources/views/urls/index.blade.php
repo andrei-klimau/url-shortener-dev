@@ -35,7 +35,13 @@
                                     <td><a href="{{ $shortUrl->orig_url }}" target="_blank">{{ $shortUrl->orig_url }}</a></td>
                                     <td><a href="{{ url($shortUrl->short_url_key) }}" target="_blank">{{ $shortUrl->short_url_key }}</td>
                                     <td>{{ $shortUrl->redirectStatistic->redirect_count ?? 0 }}</td>
-                                    <td class="d-none d-lg-table-cell">{{ $shortUrl->redirectStatistic->updated_at ?? '-' }}</td>
+                                    <td class="d-none d-lg-table-cell">
+                                        @if(empty($shortUrl->redirectStatistic->updated_at))
+                                            <span>-</span>
+                                        @else
+                                            @include('common.date-time', ['date' => $shortUrl->redirectStatistic->updated_at])
+                                        @endif
+                                    </td>
                                     <td>
                                         <div class="d-flex flex-row mb-3">
                                             <div class="p-1">
